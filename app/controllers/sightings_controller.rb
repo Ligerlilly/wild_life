@@ -1,6 +1,15 @@
 class SightingsController < ApplicationController
   before_action :find_sighting, except: [:create, :new, :index]
-  before_action :find_species
+  before_action :find_species, except: [:index]
+
+  def index
+    if params[:date]
+      @sightings = Sighting.where(date: params[:date])
+    else
+      @sightings = Sighting.all
+    end
+    render :index
+  end
 
   def show
     render :show

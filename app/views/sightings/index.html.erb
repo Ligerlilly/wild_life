@@ -1,0 +1,14 @@
+<h1>Sightings</h1>
+
+<%= form_tag({:action => :index}, {:method => :get} ) do %>
+  <%= date_field_tag "date" %>
+  <%= submit_tag "Filter" %>
+<% end %>
+
+
+
+<ul>
+  <% @sightings.each do |sighting| %>
+    <li><%= sighting.species.name %></li>
+  <% end %>
+</ul>
