@@ -8,7 +8,10 @@
   <li>
     <strong>Date: </strong><%= sighting.date %> <strong>・</strong>
     <strong>Lat: </strong><%= sighting.lat %> <strong>・</strong>
-    <strong>Long: </strong><%= sighting.long %>
+    <strong>Long: </strong><%= sighting.long %> |
+    <%= link_to "Edit", edit_species_sighting_path(@species, sighting) %> |
+    <%= link_to "Delete", species_sighting_path(@species, sighting), data: { confirm: "You sure, dude?",
+                                                                             method: "delete" } %>
   </li>
 <% end %>
 </ul>

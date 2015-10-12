@@ -1,5 +1,5 @@
 class SightingsController < ApplicationController
-  before_action :find_models, except: [:create, :new, :index]
+  before_action :find_sighting, except: [:create, :new, :index]
   before_action :find_species
 
   def show
@@ -19,6 +19,24 @@ class SightingsController < ApplicationController
       flash[:danger] = @sighting.errors.full_messages.first
       render :new
     end
+  end
+
+  def edit
+    render :edit
+  end
+
+  def update
+    if @sighting.update(sighting_params)
+      redirect_to species_path(@sighting.species)
+    else
+      flash[:danger] = @sighting.errors.full_messages.first
+      render :edit
+    end
+  end
+
+  def destroy
+    @sighting.destroy
+    redirect_to species_path(@species)
   end
 
 private
