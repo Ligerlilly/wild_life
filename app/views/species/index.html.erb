@@ -1,1 +1,7 @@
 <h1>Species Central</h1>
+<%= link_to 'Add Species', new_species_path %>
+<ul>
+  <% @species.each do |s| %>
+    <li><%= link_to s.name, species_path(s) %></li >
+  <% end %>
+</ul>

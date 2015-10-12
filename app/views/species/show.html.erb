@@ -1,0 +1,4 @@
+<h1><%= @species.name %></h1>
+<%= link_to "Edit", edit_species_path(@species) %>
+<%= link_to "Delete", species_path(@species), data: { confirm: "Are you sure?",
+                                                     method: "delete" } %>
