@@ -1,4 +1,14 @@
 <h1><%= @species.name %></h1>
+<%= link_to "Add Sighting", new_species_sighting_path(@species) %>
 <%= link_to "Edit", edit_species_path(@species) %>
 <%= link_to "Delete", species_path(@species), data: { confirm: "Are you sure?",
                                                      method: "delete" } %>
+<ul>
+<% @species.sightings.each do |sighting| %>
+  <li>
+    <strong>Date: </strong><%= sighting.date %> <strong>・</strong>
+    <strong>Lat: </strong><%= sighting.lat %> <strong>・</strong>
+    <strong>Long: </strong><%= sighting.long %>
+  </li>
+<% end %>
+</ul>
