@@ -3,10 +3,19 @@ class SightingsController < ApplicationController
   before_action :find_species, except: [:index]
 
   def index
-    if params[:date]
-      @sightings = Sighting.where(date: params[:date])
-    else
+    @species = Species.all
+    if params.keys.length == 2
       @sightings = Sighting.all
+    else
+      if params[:date] != "" && params[:species] != ""
+        @sightings = Sighting.where({date: params[:date], species_id: params[:species]})
+      elsif params[:species] != ""
+        @sightings = Sighting.where({species_id: params[:species]})
+      elsif params[:date] != ""
+        @sightings = Sighting.where({date: params[:date]})
+      else
+        @sightings = Sighting.all
+      end
     end
     render :index
   end

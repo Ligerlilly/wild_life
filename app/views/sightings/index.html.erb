@@ -1,7 +1,8 @@
 <h1>Sightings</h1>
 
-<%= form_tag({:action => :index}, {:method => :get} ) do %>
+<%= form_tag({:action => :index}, {:method => :get}) do %>
   <%= date_field_tag "date" %>
+  <%= select_tag "species", options_from_collection_for_select(@species, "id", "name"), include_blank: true %>
   <%= submit_tag "Filter" %>
 <% end %>
 
