@@ -1,2 +1,11 @@
 <h1><%= @region.name %></h1>
+<ul>
+
+  <% @region.sightings.each do |sighting| %>
+
+    <li><strong>Species:</strong> <%= sighting.species.name %> <strong>Date sighted:</strong> <%= link_to sighting.date, species_sighting_path(sighting.species, sighting) %></li>
+
+  <% end %>
+
+</ul>
 <%= link_to "Back", regions_path %>
